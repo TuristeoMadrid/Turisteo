@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const routesSchema = new Schema({
   name: String,
-  duration: Number,
+  duration: String,
   places: Array,
 }, {
     timestamps: {
