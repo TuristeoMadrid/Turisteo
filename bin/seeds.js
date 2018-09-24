@@ -48,11 +48,11 @@ route.deleteMany()
   routes[0].places = places
   route.create(routes)
 })
-// .then(() => {
-//   // Close properly the connection to Mongoose
-//   mongoose.disconnect()
-// })
-// .catch(err => {
-//   mongoose.disconnect()
-//   throw err
-// });
+.then(() => {
+  // Close properly the connection to Mongoose
+  mongoose.disconnect()
+})
+.catch(err => {
+  mongoose.disconnect()
+  throw err
+});
