@@ -216,7 +216,7 @@ routes = [
 route.deleteMany()
 .then(() => poi.find())
 .then(places => {
-  routes[0].places.push(places[0])
+  routes[0].places = places;
   return route.create(routes);
 })
 .then(() => {
