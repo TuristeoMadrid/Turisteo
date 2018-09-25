@@ -82,6 +82,9 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const tourism = require('./routes/tourism');
+app.use('/visit', tourism);
+
       
 
 module.exports = app;

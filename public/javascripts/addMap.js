@@ -26,10 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       travelMode: 'WALKING'
     };
     directionsService.route(request, function(response, status) {
-      // console.log(status)
-      console.log(response)
       if (status == 'OK') {
-        // console.log('okey')
         directionsDisplay.setDirections(response);
       }
     });
