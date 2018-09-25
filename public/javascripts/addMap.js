@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     directionsService.route(request, function(response, status) {
       if (status == 'OK') {
+        console.log(response)
         directionsDisplay.setDirections(response);
       }
     });
