@@ -20,11 +20,14 @@ router.get('/create', (req,res) => {
   PoI.find()
   .then(places => {
     res.render('tourism/new-route', {
+      user: req.user,
       places,
       placesStr: JSON.stringify(places)
     });
   })
   .catch(e => console.log(e));
 });
+
+router.post('/')
 
 module.exports = router;
