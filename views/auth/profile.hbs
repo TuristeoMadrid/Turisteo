@@ -1,9 +1,13 @@
 <a href="/" class="btn btn-outline-primary">Home</a>
-{{#if user.creator}}
-  <h3>You are a Creator</h3>
+{{#if user.status}}
+  {{#if user.creator}}
+    <h3>You are a Creator</h3>
+  {{else}}
+  <h3> Want to become a creator? </h3>
+  <form action="/creators" method="post">
+    <button type="submit"> Become a creator </button>
+  </form>
+  {{/if}}
 {{else}}
-<h3> Want to become a creator? </h3>
-<form action="/creators" method="post">
-  <button type="submit"> Become a creator </button>
-</form>
+<h3>You need to confirm your account</h3>
 {{/if}}

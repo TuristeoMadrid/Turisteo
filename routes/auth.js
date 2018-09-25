@@ -2,6 +2,10 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const sendMail = require("../email/sendMail");
+const hbs = require('hbs');
+const fs = require('fs');
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -41,19 +45,27 @@ router.post("/signup", (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    const hashUsername = encodeURI(bcrypt.hashSync(username, salt)).replace("/", "");
 
     const newUser = new User({
       username,
       password: hashPass,
       email,
+      confirmationCode: hashUsername
     });
 
     newUser.save()
+    .then(user => {
+      let subject = 'Account Confirmation';
+      let template = hbs.compile(fs.readFileSync('./email/templates/confirmation.hbs').toString());
+      let html = template({user});
+      return sendMail(user.email, subject, html);
+    })
     .then(() => {
       res.redirect("/");
     })
     .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+      res.render("auth/signup", { message: err });
     })
   });
 });
@@ -61,6 +73,17 @@ router.post("/signup", (req, res, next) => {
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
+});
+
+router.get('/confirm/:confirmCode', (req, res) => {
+	const confirmationCode = req.params.confirmCode;
+	User.findOneAndUpdate({confirmationCode}, {status: true})
+	.then((user) => {
+		res.render("auth/confirmation", {user} );
+	})
+	.catch((err) => {
+		console.log(err);
+	})
 });
 
 module.exports = router;

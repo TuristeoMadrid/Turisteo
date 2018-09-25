@@ -7,7 +7,9 @@ const userSchema = new Schema({
   email: mongoose.SchemaTypes.Email,
   password: String,
   profilePic: String,
-  creator: { type: Boolean, default: false }
+  creator: { type: Boolean, default: false },
+  status: { type: Boolean, default: false },
+  confirmationCode: { type: String, unique: true}
 }, {
     timestamps: {
       createdAt: 'created_at',
