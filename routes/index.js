@@ -1,17 +1,15 @@
 const express = require('express');
 const router  = express.Router();
-const axios = require('axios');
+const Route = require('../models/Routes');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=Madrid&destination=Barcelona&key=AIzaSyCOsALo2IdOL1cIh24PLO9YR_lkcMckqR8')
-  .then(data => {
-    // console.log(data.data);
+  Route.find()  
+  .then(routes => {
     res.render('index', {
-      data:data.data,
-      dataStr: JSON.stringify(data.data, {depth: null})});
+      routes,
+      routesStr: JSON.stringify(routes)})
   })
-  .catch(e => console.log(e))
 });
 
 

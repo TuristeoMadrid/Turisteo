@@ -4,36 +4,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   geolocalize().then(center => {
     map.setCenter(center);
-    calcRoute()
   });
-  const objConfigDR = {
-    map
-  }
+
+  const btnArr = []
+  routes.forEach(e => {
+    btnArr.push(document.getElementById(e._id));
+  })
+
+  const objConfigDR = {map};
   const directionsService = new google.maps.DirectionsService();
   const directionsDisplay = new google.maps.DirectionsRenderer( objConfigDR);
-  function calcRoute() {
-    const start = 'chicago, il';
-    const end = 'amarillo, tx';
+
+  const calcRoute = route => {
+    const start = {lat: route.places[0].location.coordinates[0], lng: route.places[0].location.coordinates[1]};
+    const end = {lat: route.places[route.places.length - 1].location.coordinates[0], lng: route.places[route.places.length - 1].location.coordinates[1]};
+    const waypoints = calcWaypoints(route);
     const request = {
       origin:start,
       destination:end,
-      travelMode: 'DRIVING'
+      waypoints,
+      travelMode: 'WALKING'
     };
     directionsService.route(request, function(response, status) {
-      console.log(status)
+      // console.log(status)
       console.log(response)
       if (status == 'OK') {
-        console.log('okey')
+        // console.log('okey')
         directionsDisplay.setDirections(response);
       }
     });
   }
 
-  // const poly = new google.maps.Polyline({
-  //   strokeColor: '#000000',
-  //   strokeOpacity: 1.0,
-  //   strokeWeight: 3
-  // });
-  // poly.setMap(map);
+  const calcWaypoints = route => {
+    const waypointsArr = [];
+    for(let i = 1; i < route.places.length - 1; i++) {
+      waypointsArr.push({
+        location: {lat: route.places[i].location.coordinates[0], lng: route.places[i].location.coordinates[1]},
+        stopover: true
+      });
+    };
+    return waypointsArr;
+  };
+
+  btnArr.forEach(e => {
+    e.addEventListener('click', () => {
+      calcRoute(routes[0])
+    })
+  })
 
 }, false);
