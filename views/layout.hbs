@@ -12,12 +12,12 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-  <nav>
+  <nav class="layout-buttons">
     {{#if user}}
-    <a href="/auth/logout" class="btn btn-outline-primary">Logout</a>
+    <a href="/auth/logout" class="btn btn-outline-primary buttonred">Logout</a>
     {{else}}
-    <a href="/auth/login" class="btn btn-outline-primary">Login</a>
-    <a href="/auth/signup" class="btn btn-outline-primary">Signup</a>
+    <a href="/auth/login" class="btn btn-outline-primary buttonred">Login</a>
+    <a href="/auth/signup" class="btn btn-outline-primary buttonred">Signup</a>
     {{/if}}
   </nav>
 

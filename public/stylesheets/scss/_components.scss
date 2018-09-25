@@ -1,0 +1,8 @@
+.layout-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .buttonred {
+      background: $red-color;
+    }
+}
