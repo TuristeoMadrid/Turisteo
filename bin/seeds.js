@@ -138,17 +138,41 @@ places = [
     photo: '../public/images/cortes-madrid.jpg'
   },
   {
-    name: '',
-    description: '',
-    location: {type: 'Point', coordinates:},
-    photo: '../public/images/'
+    name: 'Palacio de Cibeles',
+    description: 'El Palacio de Cibeles, el antiguo Palacio de las Comunicaciones, se halla frente a la Plaza Cibeles, y se destaca por su arquitectura decimonónica, que se combina a la perfección con rasgos de los tradicionales estilos españoles.',
+    location: {type: 'Point', coordinates:[40.418984,-3.6943967]},
+    photo: '../public/images/palacio-cibeles-madrid.jpg'
   },
   {
-    name: '',
-    description: '',
-    location: {type: 'Point', coordinates:},
-    photo: '../public/images/'
-  }
+    name: 'Museo Arqueológico Nacional',
+    description: 'El Museo Arqueológico Nacional fue fundado por Isabel II en el año 1867 con el objetivo de preservar el pasado de España, desde la Prehistoria hasta la Edad Moderna.',
+    location: {type: 'Point', coordinates:[40.4188148,-3.7064873]},
+    photo: '../public/images/museo-arqueologico-madrid.jpg'
+  },
+  {
+    name: 'Estadio Santiago Bernabéu',
+    description: 'Hogar del famoso Real Madrid Futbol Club, el Estadio Santiago Bernabéu permite realizar una visita de aproximadamente una hora y media, donde obtener una vista panorámica del estadio y pasear por los vestidores, banquillos, túnel y terreno de juego.',
+    location: {type: 'Point', coordinates:[40.4480125,-3.6794305]},
+    photo: '../public/images/bernabeu-madrid.jpg'
+  },
+  {
+    name: 'Plaza de Toros de Las Ventas',
+    description: 'La plaza de toros llamada Las Ventas por la ubicación geográfica en que se encuentra, es la tercera más grande del mundo y la más grande de Europa.',
+    location: {type: 'Point', coordinates:[40.4480125,-3.6794305]},
+    photo: '../public/images/plaza-toros-ventas.jpg'
+  },
+  {
+    name: 'Las Cuatro Torres',
+    description: 'Considerada la zona más moderna de Madrid, el área de las Cuatro Torres es un parque empresarial caracterizado por los cuatro edificios que le dan su nombre, los cuales son los más altos de España siendo el número uno el rascacielos Torre Cepsa.',
+    location: {type: 'Point', coordinates:[40.4629399,-3.6870151,]},
+    photo: '../public/images/cuatro-torres-madrid.jpg'
+  },
+  {
+    name: 'Plaza del Dos de Mayo',
+    description: 'Esta plaza es uno de los lugares principales donde se produjeron los hechos del dos de mayo de 1808, es decir, la batalla por la independencia que libraron los madrileños contra el ejército francés de Napoléon. El monumento que hay en el centro de la plaza está dedicado a los capitanes Daoiz y Velarde, protagonistas de la jornada.',
+    location: {type: 'Point', coordinates:[40.4321734,-3.7101863]},
+    photo: '../public/images/dos-mayo-madrid.jpg'
+  },
 ];
 
 poi.deleteMany()
