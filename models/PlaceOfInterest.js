@@ -5,6 +5,7 @@ const placeSchema = new Schema({
   name: String,
   description: String,
   photo: String,
+  duration: String,
   location: { type: { type: String }, coordinates: [Number] }
 }, {
     timestamps: {
