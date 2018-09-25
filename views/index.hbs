@@ -1,5 +1,12 @@
 <h1>Welcome to {{title}}</h1>
+{{#each routes}}
+  <button id="{{this._id}}">{{this.name}}</button>
+{{/each}}
+
 
 <div id="map" style="height:500px"></div>
+<script>
+  window.routes = {{{routesStr}}}
+</script>
 <script src="/javascripts/addMap.js"></script>
 <script src="/javascripts/geolocalize.js"></script>
