@@ -1,11 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-  });
-  geolocalize().then(center => {
-    map.setCenter(center);
-  });
-  const btnArr = []
+const btnArr = []
 routes.forEach(e => {
   btnArr.push(document.getElementById(e._id));
 });
@@ -55,4 +48,3 @@ const calcWaypoints = route => {
   };
   return waypointsArr;
 };
-}, false);

@@ -1,6 +1,6 @@
 <a href="/" class="btn btn-outline-primary">Home</a>
-{{#each routes}}
 <h1>Visit Madrid:</h1>
+{{#each routes}}
   <button id="{{this._id}}">{{this.name}}</button>
 {{/each}}
 <div id="map" style="height:500px"></div>
@@ -9,3 +9,4 @@
 </script>
 <script src="/javascripts/addMap.js"></script>
 <script src="/javascripts/geolocalize.js"></script>
+{{!-- <script src="/javascripts/renderRoute.js"></script> --}}

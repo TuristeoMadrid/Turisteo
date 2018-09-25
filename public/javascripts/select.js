@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(selected.length < places.length){
       const div = document.getElementsByClassName('route')[0];
       const select = document.createElement('select');
+      select.setAttribute('name', 'site');
       places.forEach(e => {
         const option = document.createElement('OPTION');
         option.value = e._id;

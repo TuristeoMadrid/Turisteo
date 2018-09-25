@@ -28,6 +28,22 @@ router.get('/create', (req,res) => {
   .catch(e => console.log(e));
 });
 
-router.post('/')
+router.post('/create', (req, res) => {
+  const places = new Array;
+  const sites = req.body.site;
+  sites.forEach(e => {
+    PoI.findById(e)
+    .then(ele => places.push(ele))
+  })
+
+  Route.create({
+    name: req.body.name,
+    places
+  })
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch(e => console.log(e));
+});
 
 module.exports = router;
