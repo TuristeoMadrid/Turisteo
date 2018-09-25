@@ -25,7 +25,7 @@ router.post('/profile', (req, res) => {
 
 router.get('/creator/:confirmCode', (req, res) => {
 	const confirmationCode = req.params.confirmCode;
-	User.findOneAndUpdate({confirmationCode}, {creator: true})
+	User.findOneAndUpdate({confirmationCode}, {creator: true}, {new: true})
 	.then((user) => {
 		res.render("auth/confirmation", {user} );
 	})
