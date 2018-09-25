@@ -7,6 +7,7 @@ router.get('/', (req, res, next) => {
   Route.find()  
   .then(routes => {
     res.render('index', {
+      user: req.user,
       routes,
       routesStr: JSON.stringify(routes)})
   })
