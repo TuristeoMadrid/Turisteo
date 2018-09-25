@@ -1,3 +1,4 @@
+<a href="/" class="btn btn-outline-primary">Home</a>
 {{#if user.creator}}
   <h3>You are a Creator</h3>
 {{else}}
@@ -6,3 +7,13 @@
   <button type="submit"> Become a creator </button>
 </form>
 {{/if}}
+{{#each routes}}
+<h1>Visit Madrid:</h1>
+  <button id="{{this._id}}">{{this.name}}</button>
+{{/each}}
+<div id="map" style="height:500px"></div>
+<script>
+  window.routes = {{{routesStr}}}
+</script>
+<script src="/javascripts/addMap.js"></script>
+<script src="/javascripts/geolocalize.js"></script>
