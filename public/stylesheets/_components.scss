@@ -1,0 +1,23 @@
+.layout-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .buttonred {
+      background: $red-color;
+      margin-top: 4px;
+      
+    }
+}
+
+.index-img {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 20px;
+
+  .img{
+    height: 90%;
+    width: 80%;
+  }
+  
+}

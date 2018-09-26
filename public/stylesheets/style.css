@@ -1,6 +1,31 @@
+/*
+Almacena todo lo que vayas a rehusar...
+Colores, fuentes, alturas...
+*/
+/*PALETA COLORES*/
+/*FONTS*/
+@import url("https://fonts.googleapis.com/css?family=Questrial");
+.layout-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .layout-buttons .buttonred {
+    background: #983b45;
+    margin-top: 4px; }
+
+.index-img {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 20px; }
+  .index-img .img {
+    height: 90%;
+    width: 80%; }
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  background: #fdfdfd;
+  font: 14px "Questrial", sans-serif; }
 
 a {
   color: #00B7FF; }
