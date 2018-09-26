@@ -1,9 +1,21 @@
+
 <a href="/" class="btn btn-outline-primary">Home</a>
+
 {{#each routes}}
 <h1>Visit Madrid:</h1>
   <button id="{{this._id}}">{{this.name}}</button>
 {{/each}}
-<div id="map" style="height:500px"></div>
+
+<div style="descriptionbox">
+  {{#each place}}
+  <img src="{{this.photo}}" alt="">
+  <p>Lugar:</p>{{this.name}}
+  <p>Descripción:</p> {{this.description}}
+  <p>Duración recomendada para la visita:</p>{{this.duration}}
+  {{/each}}
+</div>
+
+<div id="map"></div>
 <script>
   window.routes = {{{routesStr}}}
 </script>

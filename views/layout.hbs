@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-
+<div class="general-content">
   {{{body}}}
+
+  
   <nav class="layout-buttons">
     {{#if user}}
     <a href="/auth/logout" class="btn btn-secondary buttonred">Logout</a>
@@ -22,7 +24,7 @@
     <a href="/auth/signup" class="btn btn-secondary buttonred">Signup</a>
     {{/if}}
   </nav>
-  
+</div>
 
   <script src="/javascripts/script.js"></script>
 </body>

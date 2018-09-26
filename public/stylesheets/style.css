@@ -13,17 +13,35 @@ Colores, fuentes, alturas...
     background: #983b45;
     margin-top: 4px; }
 
+.general-content {
+  padding: 20px; }
+
 .index-img {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 90vw;
   margin: 20px; }
   .index-img .img {
-    height: 90%;
-    width: 80%; }
+    height: 90vh;
+    width: 60vw; }
+
+#map {
+  width: 100vw;
+  height: 550px;
+  margin-left: -20px; }
+
+.descriptionbox {
+  background: #983b45;
+  border-radius: 3px;
+  height: 150px;
+  margin: 100px;
+  transition: transform 0.8s;
+  position: absolute;
+  width: 150px; }
+  .descriptionbox:hover {
+    transform: translate(20px, 20px); }
 
 body {
-  padding: 50px;
   background: #fdfdfd;
   font: 14px "Questrial", sans-serif; }
 
