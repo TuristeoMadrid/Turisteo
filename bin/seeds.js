@@ -216,11 +216,10 @@ routes = [
 route.deleteMany()
 .then(() => poi.find())
 .then(places => {
-  routes[0].places.push(places[0])
+  routes[0].places = [places[11], places[20], places[9], places[5], places[14]];
   return route.create(routes);
 })
 .then(() => {
-  // Close properly the connection to Mongoose
   mongoose.disconnect()
 })
 .catch(err => {

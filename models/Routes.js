@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const routesSchema = new Schema({
   name: String,
-  duration: String,
-  places: Array,
+  duration: {type: String, default: 'Undefined'},
+  places: [{ type: Schema.Types.ObjectId, ref: 'Place' }]
 }, {
     timestamps: {
       createdAt: 'created_at',

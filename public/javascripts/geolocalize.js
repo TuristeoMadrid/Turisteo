@@ -10,4 +10,5 @@ const geolocalize = () => {
         resolve(center);
       }, reject);
   });
+  
 };
