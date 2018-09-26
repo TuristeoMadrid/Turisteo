@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const routesSchema = new Schema({
   name: String,
   duration: {type: String, default: 'Undefined'},
-  places: Array,
+  places: [{ type: Schema.Types.ObjectId, ref: 'Place' }]
 }, {
     timestamps: {
       createdAt: 'created_at',

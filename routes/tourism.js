@@ -5,8 +5,10 @@ const Route = require('../models/Routes');
 const PoI = require('../models/PlaceOfInterest');
 
 router.get('/', ensureLoggedIn(), (req,res) => {
-  Route.find()  
+  Route.find()
+  .populate('places')
   .then(routes => {
+    console.log(routes);
     res.render('tourism/visit', {
       user: req.user,
       routes,
@@ -31,11 +33,7 @@ router.get('/create', (req,res) => {
 router.post('/create', (req, res) => {
   const places = new Array;
   const sites = req.body.site;
-  sites.forEach(e => {
-    PoI.findById(e)
-    .then(ele => places.push(ele))
-  })
-
+  sites.forEach(e => places.push(e));
   Route.create({
     name: req.body.name,
     places
