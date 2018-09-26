@@ -2,19 +2,11 @@ const express = require('express');
 const router  = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 const Route = require('../models/Routes');
-<<<<<<< HEAD
-const Place = require('../models/PlaceOfInterest');
-
-router.get('/', ensureLoggedIn(), (req,res) => {
-  Place.find()
-  Route.find()  
-=======
 const PoI = require('../models/PlaceOfInterest');
 
 router.get('/', ensureLoggedIn(), (req,res) => {
   Route.find()
   .populate('places')
->>>>>>> 3605cfadc554a3551895c48257d962587ed67af1
   .then(routes => {
     console.log(routes);
     res.render('tourism/visit', {
