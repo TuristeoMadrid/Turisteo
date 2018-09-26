@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const div = document.getElementsByClassName('route')[0];
       const select = document.createElement('select');
       select.setAttribute('name', 'site');
+      const blank = document.createElement('option');
+      blank.setAttribute('disabled', true);
+      blank.setAttribute('selected', true);
+      blank.text = 'Select next place of interest';
+      select.appendChild(blank);
+      // <option disabled selected value> -- select an option -- </option>
       places.forEach(e => {
         const option = document.createElement('OPTION');
         option.value = e._id;
