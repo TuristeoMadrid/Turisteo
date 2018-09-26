@@ -32,13 +32,6 @@
 .descriptionbox {
     background: $red-color; 
     border-radius: 3px;
-    height: 150px;
-    margin: 100px;
-    transition: transform 0.8s;
-    position: absolute;
-    width: 150px;
-    
-      &:hover {
-        transform: translate(20px, 20px);
-    }
+    height: 550px;
+    width: 40vw;
   }
