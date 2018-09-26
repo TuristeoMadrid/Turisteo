@@ -44,4 +44,20 @@ router.post('/create', (req, res) => {
     .catch(e => console.log(e));
 });
 
+router.post('/estimate', (req,res) => {
+  res.status(200);
+  PoI.find({'_id': {
+    $in: req.body.places
+  }}, {duration: 1, _id: 0, location: 1})
+  .then(durations => {
+    let arr = [];
+    let locations = [];
+    durations.forEach(e => arr.push(parseInt(e.duration.split(' ')[0])));
+    let time = arr.reduce((a,b) => a+b);
+    durations.forEach(e => locations.push(e.location));
+    res.send({time, locations});
+  })
+  .catch(e => console.log(e));
+});
+
 module.exports = router;

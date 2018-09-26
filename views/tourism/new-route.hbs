@@ -7,15 +7,17 @@
   <br>
   <div class="route">
   </div>
-  {{!-- <div class="time">
+  <div class="time">
     <a href="#" id="time" class="btn btn-outline-primary">Calculate time</a>
     <span id="estimated"></span>
-  </div> --}}
+  </div>
   <div><button type="submit" class="btn btn-outline-primary">Create</button></div>
 </form>
-
+<div id="map" style="height:500px"></div>
 <script>
   window.places = {{{placesStr}}}
 </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/geolocalize.js"></script>
+<script src="/javascripts/time.js"></script>  
 <script src="/javascripts/select.js"></script>
-{{!-- <script src="/javascripts/time.js"></script> --}}

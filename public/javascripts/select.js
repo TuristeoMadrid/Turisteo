@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   let selected = document.getElementsByTagName('select');
-
   const btnEventListener = arr => {
     arr[arr.length - 1].addEventListener('input', newSelect);
     for(let i = 0; i < arr.length - 1; i++) {
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
       blank.setAttribute('selected', true);
       blank.text = 'Select next place of interest';
       select.appendChild(blank);
-      // <option disabled selected value> -- select an option -- </option>
       places.forEach(e => {
         const option = document.createElement('OPTION');
         option.value = e._id;
@@ -29,27 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
       div.appendChild(select);
       btnEventListener(document.getElementsByTagName('select'));
       checker();
+      console.log(selected)
     }
   }
-
+  
   const checkPlace = () => {
     let arr = [];
     for(let i = 0; i < selected.length - 1; i++) arr.push(selected[i].value)
     return (new Set(arr)).size !== arr.length;
   };
-
+  
   const disableSelect = () => {
     selected[selected.length - 1].disabled = true;
   }
-
+  
   const enableSelect = () => {
     selected[selected.length - 1].disabled = false;
   }
-
+  
   const checker = () => {
     checkPlace() ? disableSelect() : enableSelect();
   }
-
+  
   newSelect();
-
 });
