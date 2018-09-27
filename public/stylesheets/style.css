@@ -73,6 +73,9 @@
   color: #983b45;
   font-size: 20px; }
 
+.img-error {
+  height: 450px; }
+
 body {
   background: #fdfdfd;
   font: 14px "Arial", "Questrial", sans-serif; }
