@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const div = document.getElementsByClassName('route')[0];
       const select = document.createElement('select');
       select.setAttribute('name', 'site');
+      select.setAttribute('class', 'custom-select');
+      select.className += ' my-2'
       const blank = document.createElement('option');
       blank.setAttribute('disabled', true);
       blank.setAttribute('selected', true);

@@ -60,19 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
         response.routes[0].legs.forEach(e => routeTime.push(parseInt(e.duration.text.split(' ')[0])))
         routeTime = routeTime.reduce((a,b)=>a+b);
         let poiTime = e.data.time;
-        console.log(routeTime)
-        console.log(poiTime)
         return routeTime + poiTime;
       })
-      // .then(e => console.log(e))
       .then(time => {
-        timeSpan.innerHTML = timeConverter(time);
+        timeSpan.innerHTML = 'Estimated route time: ' + timeConverter(time);
       })
+      .then(() => document.getElementById('create').removeAttribute('hidden'))
     })
-
-
-    // calcRoute()
   };
-
-
 });
