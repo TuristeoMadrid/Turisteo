@@ -33,11 +33,13 @@ router.get('/create', (req,res) => {
 router.post('/create', (req, res) => {
   const places = new Array;
   const sites = req.body.site;
+  const duration = req.body.timed
   sites.forEach(e => places.push(e));
   Route.create({
     name: req.body.name,
     places,
-    description: req.body.description
+    description: req.body.description,
+    duration: duration 
   })
     .then(() => {
       res.redirect('/')

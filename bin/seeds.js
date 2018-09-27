@@ -2,6 +2,7 @@ require('dotenv').config({path: '.env'});
 const mongoose = require("mongoose");
 const poi = require('../models/PlaceOfInterest');
 const route = require('../models/Routes');
+const user = require('../models/User');
 
 mongoose.connect(process.env.DBURL, {useNewUrlParser: true})
 .then(x => {
@@ -11,7 +12,7 @@ mongoose.connect(process.env.DBURL, {useNewUrlParser: true})
   console.error('Error connecting to mongo', err);
 });
 
-places = [
+const places = [
   {
     name: 'Puerta del Sol',
     description: 'Plaza con una estatua ecuestre del rey Carlos III y kilómetro 0 de las carreteras radiales españolas.',
@@ -207,7 +208,7 @@ poi.deleteMany()
 .then(() => poi.create(places))
 
 
-routes = [
+const routes = [
   {
     name: 'Most iconic places in Madrid',
     duration: '1:30h',
@@ -220,6 +221,20 @@ route.deleteMany()
   routes[0].places = [places[11], places[20], places[9], places[5], places[14]];
   return route.create(routes);
 })
+
+const userDefault = [
+  {
+    username: 'admin',
+    email: 'turisteo.madrid@gmail.com',
+    password: 'superadmin',
+    admin: true,
+    creator: true,
+    status: true,
+  }
+];
+
+user.deleteMany()
+.then(() => user.create(userDefault))
 .then(() => {
   mongoose.disconnect()
 })

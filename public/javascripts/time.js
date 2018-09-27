@@ -47,6 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.floor(time / 60) + ' hours ' + Math.round(time / 60 % 1 * 60) + ' mins';
   }
 
+  let estimatedTime = document.createElement('input');
+  estimatedTime.setAttribute('hidden', 'hidden')
+  estimatedTime.name = 'timed';
+  let parent = document.getElementsByClassName('time')[0]
+
   document.getElementById("time").onclick = () => {
     let places = document.getElementsByTagName("select");
     let idArr = [];
@@ -63,7 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return routeTime + poiTime;
       })
       .then(time => {
+        estimatedTime.value = timeConverter(time);
         timeSpan.innerHTML = 'Estimated route time: ' + timeConverter(time);
+        parent.appendChild(estimatedTime)
       })
       .then(() => document.getElementById('create').removeAttribute('hidden'))
     })
