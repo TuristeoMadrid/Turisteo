@@ -1,27 +1,44 @@
-<h2>Create new route</h2>
-<form action="/visit/create" method="post">
-  <div class="name">
-    <label for="name">Route name:</label>
-    <input type="text" name="name" id="name">
-  </div>
-    <div class="description">
-    <label for="description">Route description:</label>
-    <input type="text" name="description" id="description">
-  </div>
+<div class="general-content">
+  <h2>Create new route</h2>
+  <form action="/visit/create" method="post">
+    <div class="form-group">
+
+      <div class="container-fluid d-flex bd-highlight ">
+        <div class="row">
+          <div class="name flex-fill bd-highlight">
+            <label for="name">Route name: </label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Route name">
+          </div>
+
+          <div class="layout-buttons">
+            <div class="time px-2 flex-fill bd-highlight d-flex align-items-end">
+              <a href="#" id="time" class="btn buttonred">Calculate time</a>
+              <span class="time-est" id="estimated"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="description">
+        <label for="description">Route description:</label>
+        <input type="text" name="description" id="description" class="form-control" placeholder="Describe your route">
+      </div>
+      <br>
+      <div class="route">
+      </div>
+    </div>
+    <div class="layout-buttons">
+      <div><button type="submit" class="btn buttonred">Create</button></div>
+    </div>
+  </form>
   <br>
-  <div class="route">
-  </div>
-  <div class="time">
-    <a href="#" id="time" class="btn btn-outline-primary">Calculate time</a>
-    <span id="estimated"></span>
-  </div>
-  <div><button type="submit" class="btn btn-outline-primary">Create</button></div>
-</form>
-<div id="map" style="height:500px"></div>
+  <div id="map" style="height:500px"></div>
+</div>
 <script>
-  window.places = {{{placesStr}}}
+  window.places = {{{ placesStr }}}
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/javascripts/geolocalize.js"></script>
-<script src="/javascripts/time.js"></script>  
+<script src="/javascripts/time.js"></script>
 <script src="/javascripts/select.js"></script>

@@ -41,6 +41,7 @@
   width: 100vw;
   height: 550px;
   margin-left: -20px;
+  margin-bottom: 25px;
 
 }
 
@@ -77,4 +78,9 @@
       color: $grey-color;
       font-size: 14px;
     }
+  }
+
+  .time-est {
+    color: $red-color;
+    font-size: 20px;
   }

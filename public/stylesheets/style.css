@@ -36,7 +36,8 @@
 #map {
   width: 100vw;
   height: 550px;
-  margin-left: -20px; }
+  margin-left: -20px;
+  margin-bottom: 25px; }
 
 .descriptionbox {
   background: #983b45;
@@ -67,6 +68,10 @@
 .info p {
   color: #86929f;
   font-size: 14px; }
+
+.time-est {
+  color: #983b45;
+  font-size: 20px; }
 
 body {
   background: #fdfdfd;
