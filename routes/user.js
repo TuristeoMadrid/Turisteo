@@ -4,9 +4,9 @@ const router  = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 const User = require("../models/User");
 const sendMail = require("../email/sendMail");
+const Route = require('../models/Routes');
 const hbs = require('hbs');
 const fs = require('fs');
-
   
 router.get('/profile', ensureLoggedIn(), (req,res) => {
     res.render('auth/profile', {user: req.user});
@@ -40,8 +40,16 @@ router.get('/confirm', (req,res) => {
     res.render('auth/confirm');
 });
 
-router.get('/admin', (req, res) => {
-    res.render('index')
+router.get('/admin', ensureLoggedIn(),(req, res) => {
+    if(req.user.admin) {
+        User.find()
+        .then(users => {
+            Route.find()
+            .then(routes => {
+                res.render('auth/admin', {users, routes});
+            });
+        });
+    } else {res.redirect('/')}
 });
 
 module.exports = router;
