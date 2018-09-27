@@ -1,33 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  $(function() {
+  $(function () {
     $(".btn").tooltip({
-        show: {
+      show: {
         effect: "slideDown",
         delay: 300
-        }
+      }
     });
-    $( function() {
-      // run the currently selected effect
+    $(function () {
       function runEffect(id) {
-        const options = {};
-        // Run the effect
-        $( `#${id}1` ).show( 'fade', options, 200, callback );
+        $(`#${id}1`).show('fade');
       };
-   
-      //callback function to bring a hidden box back
-      function callback() {
-        setTimeout(function() {
-          $( ".effect:visible" ).removeAttr( "style" ).fadeOut();
-        }, 1000 );
-      };
-   
-      // Set effect from select menu value
-      $( ".btn" ).on( "mouseover", function(e) {
+
+      $(".btn").on("mouseover", function (e) {
         runEffect(e.target.id);
       });
-   
-      $( ".effect" ).hide();
-    } );
-  
-});
+
+      $(".effect").hide();
+    });
+
+    $(function() {
+      function outFunc(id) {
+        $(`#${id}1`).removeAttr("style").fadeOut();
+      };
+
+      $(".btn").on("mouseout", function (e) {
+        outFunc(e.target.id);
+      });
+    });
+
+  });
 }, false);

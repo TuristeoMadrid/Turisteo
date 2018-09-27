@@ -9,8 +9,19 @@
 {{/each}}
 {{#each routes}}
 <div class="toggler">
-  <div id="{{this.id}}1" class="ui-widget-content ui-corner-all effect">
-    <p>{{this.description}}</p>
+  <div id="{{this.id}}1" class="ui-widget-content ui-corner-all effect container my-3">
+      <h3 class="text-center">Route: {{this.name}}</h3>
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <h3>Description:</h3>
+          <p>{{this.description}}</p>
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <h4>Estimated time:</h4>
+          <p>{{this.duration}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {{/each}}
