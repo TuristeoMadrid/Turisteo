@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
       div.appendChild(select);
       btnEventListener(document.getElementsByTagName('select'));
       checker();
-      console.log(selected)
     }
   }
   

@@ -1,8 +1,9 @@
+require('dotenv').config({path: '.env'});
 const mongoose = require("mongoose");
 const poi = require('../models/PlaceOfInterest');
 const route = require('../models/Routes');
 
-mongoose.connect('mongodb://localhost/turisteo', {useNewUrlParser: true})
+mongoose.connect(process.env.DBURL, {useNewUrlParser: true})
 .then(x => {
   console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
 })
