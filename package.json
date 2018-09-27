@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "sass public/stylesheets/scss/main.scss:public/stylesheets/style.css; node ./bin/www",
     "dev": "DEBUG=turisteo:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
@@ -26,6 +26,7 @@
     "nodemailer": "^4.6.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "sass": "1.14.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

@@ -36,7 +36,8 @@ router.post('/create', (req, res) => {
   sites.forEach(e => places.push(e));
   Route.create({
     name: req.body.name,
-    places
+    places,
+    description: req.body.description
   })
     .then(() => {
       res.redirect('/')

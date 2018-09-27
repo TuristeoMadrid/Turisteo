@@ -1,23 +1,18 @@
-
-<a href="/" class="btn btn-outline-primary">Home</a>
-<h1>Visit Madrid:</h1>
+<div id="map" class="mx-0 px-0"></div>
+<section class="my-3">
 {{#each routes}}
-  <button id="{{this._id}}">{{this.name}}</button>
-{{/each}}
-
-<div style="descriptionbox">
-  {{#each place}}
-  <img src="{{this.photo}}" alt="">
-  <p>Lugar:</p>{{this.name}}
-  <p>Descripción:</p> {{this.description}}
-  <p>Duración recomendada para la visita:</p>{{this.duration}}
-  {{/each}}
+<div class="container-fluid">
+  <div class="layout-buttons">
+    <button id="{{this._id}}" class="btn buttonred" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{this.description}}">{{this.name}}</button>
+  </div>
 </div>
+{{/each}}
+</section>
 
-<div id="map"></div>
 <script>
   window.routes = {{{routesStr}}}
 </script>
+{{!-- <script src="/javascripts/popover.js"></script> --}}
 <script src="/javascripts/addMap.js"></script>
 <script src="/javascripts/geolocalize.js"></script>
 <script src="/javascripts/renderRoute.js"></script>

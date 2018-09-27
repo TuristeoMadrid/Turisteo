@@ -1,26 +1,27 @@
 <div class="general-content">
-<h2>Login</h2>
-
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="Username">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button class="btn btn-outline-success">Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+  <h2>Login</h2>
+  <form action="/auth/login" method="POST" id="form-container">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" placeholder="Username" class="form-control">
+      <br><br>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Your password" class="form-control">
+      <br>
+      {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
+      <br><br>
+      <div class="layout-buttons">
+        <button class="btn buttonred">Login</button>
+      </div>
+      <br><br>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <span class="account-message">Don't have an account yet?</span>
+        <div class="layout-buttons px-2">
+          <a href="/auth/signup" class="btn buttongreen">Signup</a>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
