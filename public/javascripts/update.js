@@ -3,7 +3,6 @@ const updatePrevBtn = document.getElementsByClassName('updatePrevBtn');
 const changeToForm = ele => {
   const pArr = document.getElementsByClassName(`${ele.id}p`);
   const inputArr = document.getElementsByClassName(`${ele.id}input`);
-  const bArr = document.getElementsByClassName(`${ele.id}b`);
   for(let i = 0; i < pArr.length; i++){
     inputArr[i].removeAttribute('hidden');
     pArr[i].setAttribute('hidden', 'hidden');

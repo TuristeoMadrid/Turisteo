@@ -7,6 +7,7 @@ const sendMail = require("../email/sendMail");
 const Route = require('../models/Routes');
 const hbs = require('hbs');
 const fs = require('fs');
+var ObjectId = require('mongoose').Types.ObjectId; 
   
 router.get('/profile', ensureLoggedIn(), (req,res) => {
     res.render('auth/profile', {user: req.user});
@@ -58,12 +59,11 @@ router.post('/delete/user', (req,res) => {
 });
 
 router.post('/update/user', (req,res) => {
-    console.log(req.body)
-    let {username, email, creator, status, admin, id} = req.body;
-    User.findOneAndUpdate({_id: id}, {username: username, email: email, creator: creator, status: status, admin: admin})
-    .then(() => console.log(username, email, creator, status, admin))
+    let {username, email, creator, status, admin} = req.body;
+    let id = req.body.update;
+    User.findByIdAndUpdate(new ObjectId(id),{username: username, email:email, creator: creator, status: status, admin: admin})
     .then(() => res.redirect('/admin'));
-})
+});
 
 
 
