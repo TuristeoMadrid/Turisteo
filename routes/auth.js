@@ -88,4 +88,5 @@ router.get('/confirm/:confirmCode', (req, res) => {
 	});
 });
 
+
 module.exports = router;
