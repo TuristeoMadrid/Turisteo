@@ -3,7 +3,14 @@
 {{#each routes}}
 <div class="container-fluid">
   <div class="layout-buttons">
-    <button id="{{this._id}}" class="btn buttonred" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{this.description}}">{{this.name}}</button>
+    <button id="{{this._id}}" class="btn buttonred">{{this.name}}</button>
+  </div>
+</div>
+{{/each}}
+{{#each routes}}
+<div class="toggler">
+  <div id="{{this.id}}1" class="ui-widget-content ui-corner-all effect">
+    <p>{{this.description}}</p>
   </div>
 </div>
 {{/each}}
@@ -12,7 +19,7 @@
 <script>
   window.routes = {{{routesStr}}}
 </script>
-{{!-- <script src="/javascripts/popover.js"></script> --}}
+<script src="/javascripts/popover.js"></script>
 <script src="/javascripts/addMap.js"></script>
 <script src="/javascripts/geolocalize.js"></script>
 <script src="/javascripts/renderRoute.js"></script>
