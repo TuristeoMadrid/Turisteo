@@ -54,8 +54,17 @@ router.get('/admin', ensureLoggedIn(),(req, res) => {
 
 router.post('/delete/user', (req,res) => {
     User.findByIdAndRemove(req.body.delete)
-    .then(() => res.redirect('/admin'))
+    .then(() => res.redirect('/admin'));
 });
+
+router.post('/update/user', (req,res) => {
+    let {username, email, creator, status, admin} = req.body;
+    creator === 'YES' ? creator = true : creator = false;
+    status === 'YES' ? status = true : status = false;
+    admin === 'YES' ? admin = true : admin = false;
+    User.findByIdAndUpdate(req.user.update, {username, email, creator,status, admin})
+    .then(() => res.redirect('/admin'));
+})
 
 
 
