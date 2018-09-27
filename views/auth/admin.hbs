@@ -1,12 +1,66 @@
-<h2>Admin - Routes</h2>
+<div class="container-fluid mx-3 d-flex flex-column justify-content-center align-items-center">
+    <h2>Admin</h2>
+    <div class="row align-self-stretch">
+        {{#each routes}}
+        <button id="{{this._id}}" class="btn buttonred">{{this.name}}</button>
+        <form action="{{this._id}}/delete" method="POST">
+            <button type="submit">Delete this route</button>
+        </form>
+        {{/each}}
+    </div>
 
-{{#each routes}}  
-    <button id="{{this._id}}" class="btn buttonred">{{this.name}}</button>
-    <form action="{{this._id}}/delete" method="POST">
-    <button type="submit">Delete this route</button>
-    </form>
-{{/each}}
-
-{{#each users}}
-<p>hola</p>
-{{/each}}
+    <h3>Users</h3>
+    <div class="row align-self-stretch">
+        <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>Username</p>
+        </div>
+        <div class="password border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>Email</p>
+        </div>
+        <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>Verified </p>
+        </div>
+        <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>Creator</p>
+        </div>
+        <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>Admin</p>
+        </div>
+    </div>
+    {{#each users}}
+    <div class="row align-self-stretch">
+        <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>{{this.username}}</p>
+        </div>
+        <div class="password border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>{{this.email}}</p>
+        </div>
+        <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>{{#if this.status}}YES{{else}}NO{{/if}}</p>
+        </div>
+        <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>{{#if this.creator}}YES{{else}}NO{{/if}}</p>
+        </div>
+        <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-1">
+            <p>{{#if this.admin}}YES{{else}}NO{{/if}}</p>
+        </div>
+        <div class="delete py-2 d-flex align-items-center justify-content-center col-md-2">
+            <form action="/delete/user" method="post">
+                <div class="layout-buttons">
+                    <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+                    <button type="submit" class="btn buttonred">Delete this user</button>
+                </div>
+            </form>
+        </div>
+        <div class="delete py-2 d-flex align-items-center justify-content-center col-md-2">
+            <form action="/update/user" method="post">
+                <div class="layout-buttons">
+                    <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+                    <button type="submit" class="btn buttonlight">Update this user</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<script src="/javascripts/update.js"></script>

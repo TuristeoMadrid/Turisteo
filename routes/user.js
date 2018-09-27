@@ -46,10 +46,17 @@ router.get('/admin', ensureLoggedIn(),(req, res) => {
         .then(users => {
             Route.find()
             .then(routes => {
-                res.render('auth/admin', {users, routes});
+                res.render('auth/admin', {users, routes, user:req.user});
             });
         });
     } else {res.redirect('/')}
 });
+
+router.post('/delete/user', (req,res) => {
+    User.findByIdAndRemove(req.body.delete)
+    .then(() => res.redirect('/admin'))
+});
+
+
 
 module.exports = router;

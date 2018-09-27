@@ -1,0 +1,1 @@
+let updateBtns = document.getElementsByClassName('deleteBtn')
