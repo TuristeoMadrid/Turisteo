@@ -40,4 +40,8 @@ router.get('/confirm', (req,res) => {
     res.render('auth/confirm');
 });
 
+router.get('/admin', (req, res) => {
+    res.render('index')
+});
+
 module.exports = router;

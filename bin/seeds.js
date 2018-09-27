@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const poi = require('../models/PlaceOfInterest');
 const route = require('../models/Routes');
 const user = require('../models/User');
+const bcrypt = require("bcrypt");
+const bcryptSalt = 10;
 
 mongoose.connect(process.env.DBURL, {useNewUrlParser: true})
 .then(x => {
@@ -226,7 +228,6 @@ const userDefault = [
   {
     username: 'admin',
     email: 'turisteo.madrid@gmail.com',
-    password: 'superadmin',
     admin: true,
     creator: true,
     status: true,
@@ -234,7 +235,18 @@ const userDefault = [
 ];
 
 user.deleteMany()
-.then(() => user.create(userDefault))
+.then(() => {
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  return bcrypt.hashSync('superadmin', salt)
+})
+.then(e => user.create({
+  username: 'admin',
+  email: 'turisteo.madrid@gmail.com',
+  admin: true,
+  creator: true,
+  status: true,
+  password: e
+}))
 .then(() => {
   mongoose.disconnect()
 })
