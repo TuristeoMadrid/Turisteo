@@ -10,53 +10,69 @@
     </div>
 
     <h3>Users</h3>
-    <div class="row align-self-stretch">
+    <div class="d-flex flex-row align-self-stretch col-md-10">
         <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
             <p>Username</p>
         </div>
         <div class="password border py-2 d-flex align-items-center justify-content-center col-md-2">
             <p>Email</p>
         </div>
-        <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-1">
+        <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-2">
             <p>Verified </p>
         </div>
-        <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-1">
+        <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-2">
             <p>Creator</p>
         </div>
-        <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-1">
+        <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-2">
             <p>Admin</p>
         </div>
     </div>
     {{#each users}}
-    <div class="row align-self-stretch">
-        <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
-            <p>{{this.username}}</p>
-        </div>
-        <div class="password border py-2 d-flex align-items-center justify-content-center col-md-2">
-            <p>{{this.email}}</p>
-        </div>
-        <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-1">
-            <p>{{#if this.status}}YES{{else}}NO{{/if}}</p>
-        </div>
-        <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-1">
-            <p>{{#if this.creator}}YES{{else}}NO{{/if}}</p>
-        </div>
-        <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-1">
-            <p>{{#if this.admin}}YES{{else}}NO{{/if}}</p>
-        </div>
+    <div class="container-fluid d-flex flex-row align-self-stretch justify-content-start px-0">
+        <form class="d-flex flex-row align-self-stretch col-md-10" action="/update/user" method="post">
+            <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p class="{{this.id}}p">{{this.username}}</p>
+                <input class="{{this.id}}input form-control" hidden="hidden" type="text" value="{{this.username}}">
+            </div>
+            <div class="password border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p class="{{this.id}}p">{{this.email}}</p>
+                <input class="{{this.id}}input form-control" hidden="hidden" type="text" value="{{this.email}}">
+            </div>
+            <div class="verified border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p class="{{this.id}}p">{{#if this.status}}YES{{else}}NO{{/if}}</p>
+                <select class="{{this.id}}input custom-select" hidden="hidden" type="text">
+                    <option value="true" {{#if this.status}} selected="selected" {{/if}}>YES</option>
+                    <option value="false" {{#unless this.status}} selected="selected" {{/unless}}>NO</option>
+                </select>
+            </div>
+            <div class="creator border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p class="{{this.id}}p">{{#if this.creator}}YES{{else}}NO{{/if}}</p>
+                <select class="{{this.id}}input custom-select" hidden="hidden" type="text">
+                    <option value="true" {{#if this.creator}} selected="selected" {{/if}}>YES</option>
+                    <option value="false" {{#unless this.creator}} selected="selected" {{/unless}}>NO</option>
+                </select>
+            </div>
+            <div class="admin border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p class="{{this.id}}p">{{#if this.admin}}YES{{else}}NO{{/if}}</p>
+                <select class="{{this.id}}input custom-select" hidden="hidden" type="text">
+                    <option value="true" {{#if this.admin}} selected="selected" {{/if}}>YES</option>
+                    <option value="false" {{#unless this.admin}} selected="selected" {{/unless}}>NO</option>
+                </select>
+            </div>
+            <div class="delete py-2 d-flex align-items-center justify-content-center col-md-2">
+                <div class="layout-buttons">
+                    <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+                    <a href="#" class="btn buttonlight updatePrevBtn" id="{{this.id}}">Update</a>
+                    <button type="submit" class="btn buttonlight updateBtn {{this.id}}b" hidden="hidden">Update this
+                        user</button>
+                </div>
+            </div>
+        </form>
         <div class="delete py-2 d-flex align-items-center justify-content-center col-md-2">
             <form action="/delete/user" method="post">
                 <div class="layout-buttons">
                     <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
                     <button type="submit" class="btn buttonred">Delete this user</button>
-                </div>
-            </form>
-        </div>
-        <div class="delete py-2 d-flex align-items-center justify-content-center col-md-2">
-            <form action="/update/user" method="post">
-                <div class="layout-buttons">
-                    <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
-                    <button type="submit" class="btn buttonlight">Update this user</button>
                 </div>
             </form>
         </div>
