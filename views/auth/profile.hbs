@@ -1,17 +1,61 @@
-<div class="general-content">
-
-<a href="/" class="btn btn-secondary buttonred">Home</a>
-{{#if user.status}}
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center container-fluid">
+  <h2>Your profile</h2>
+  <div class="d-flex flex-row align-items-center justify-content-center container-fluid">
+    <div class="col-md-3 px-0">
+      <div class="name border py-2 text-center">
+        <span>Your username: </span>
+      </div>
+      <div class="email border py-2 text-center">
+        <span>Your email: </span>
+      </div>
+      <div class="status border py-2 text-center">
+        <span>Status: </span>
+      </div>
+      {{#if user.status}}
+      {{#if user.creator}}
+      <div class="creator border py-2 text-center">
+        <span>Creator: </span>
+      </div>
+      {{else}}
+      <br><br>
+      <div class="creator border py-2 text-center">
+        <span>Creator: </span>
+      </div>
+      {{/if}}
+      {{/if}}
+    </div>
+    <div class="col-md-3 px-0">
+      <div class="name border py-2 text-center">
+        <span>{{user.username}}</span>
+      </div>
+      <div class="email border py-2 text-center">
+        <span>{{user.email}}</span>
+      </div>
+      <div class="status border py-2 text-center">
+        <span>
+          {{#if user.status}}Confirmed{{else}}Not confirmed{{/if}}
+        </span>
+      </div>
+      {{#if user.status}}
+      <div class="creator border py-2 text-center">
+        {{#if user.creator}}
+        <span>You are a creator</span>
+        {{else}}
+        <br><br>
+        <form action="/profile" method="post">
+          <div class="layout-buttons">
+            <button type="submit" class="btn buttonred"> Become a creator </button>
+          </div>
+        </form>
+        {{/if}}
+      </div>
+      {{/if}}
+      <span></span>
+    </div>
+  </div>
   {{#if user.creator}}
-    <h3>You are a Creator</h3>
-    <a href="/visit/create">Create new route</a>
-  {{else}}
-  <h3> Want to become a creator? </h3>
-  <form action="/profile" method="post">
-    <button type="submit" class="btn btn-outline-success"> Become a creator </button>
-  </form>
+  <div class="layout-buttons my-5">
+    <a href="/visit/create" class="btn buttonred">Create new route</a>
+  </div>
   {{/if}}
-{{else}}
-<h3>You need to confirm your account</h3>
-{{/if}}
 </div>
