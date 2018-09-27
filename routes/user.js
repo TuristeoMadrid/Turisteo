@@ -1,3 +1,4 @@
+require('dotenv').config({path: '.env'});
 const express = require('express');
 const router  = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
@@ -14,8 +15,9 @@ router.get('/profile', ensureLoggedIn(), (req,res) => {
 router.post('/profile', (req, res) => {
     let user = req.user;
     let subject = 'Account Confirmation';
+    let url = process.env.CONFIRMATION
     let template = hbs.compile(fs.readFileSync('./email/templates/creator.hbs').toString());
-    let html = template({user});
+    let html = template({user, url});
     sendMail(user.email, subject, html)
     .then(() => {
         res.redirect("/confirm");

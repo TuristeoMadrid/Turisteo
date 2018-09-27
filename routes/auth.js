@@ -1,3 +1,4 @@
+require('dotenv').config({path: '.env'});
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
@@ -57,8 +58,9 @@ router.post("/signup", (req, res, next) => {
     newUser.save()
     .then(user => {
       let subject = 'Account Confirmation';
+      let url = process.env.CONFIRMATION;
       let template = hbs.compile(fs.readFileSync('./email/templates/confirmation.hbs').toString());
-      let html = template({user});
+      let html = template({user, url});
       return sendMail(user.email, subject, html);
     })
     .then(() => {
