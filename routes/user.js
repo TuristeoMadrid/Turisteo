@@ -58,11 +58,10 @@ router.post('/delete/user', (req,res) => {
 });
 
 router.post('/update/user', (req,res) => {
-    let {username, email, creator, status, admin} = req.body;
-    creator === 'YES' ? creator = true : creator = false;
-    status === 'YES' ? status = true : status = false;
-    admin === 'YES' ? admin = true : admin = false;
-    User.findByIdAndUpdate(req.user.update, {username, email, creator,status, admin})
+    console.log(req.body)
+    let {username, email, creator, status, admin, id} = req.body;
+    User.findOneAndUpdate({_id: id}, {username: username, email: email, creator: creator, status: status, admin: admin})
+    .then(() => console.log(username, email, creator, status, admin))
     .then(() => res.redirect('/admin'));
 })
 
