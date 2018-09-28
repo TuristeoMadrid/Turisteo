@@ -7,7 +7,8 @@ const sendMail = require("../email/sendMail");
 const Route = require('../models/Routes');
 const hbs = require('hbs');
 const fs = require('fs');
-var ObjectId = require('mongoose').Types.ObjectId; 
+const ObjectId = require('mongoose').Types.ObjectId;
+const isAdmin = require('../middlewares/isAdmin');
   
 router.get('/profile', ensureLoggedIn(), (req,res) => {
     res.render('auth/profile', {user: req.user});
@@ -41,31 +42,29 @@ router.get('/confirm', (req,res) => {
     res.render('auth/confirm');
 });
 
-router.get('/admin', ensureLoggedIn(),(req, res) => {
-    if(req.user.admin) {
-        User.find()
-        .then(users => {
-            Route.find()
-            .then(routes => {
-                res.render('auth/admin', {users, routes, user:req.user});
-            });
+router.get('/admin', [ensureLoggedIn(), isAdmin('/')],(req, res) => {
+    User.find()
+    .then(users => {
+        Route.find()
+        .then(routes => {
+            res.render('auth/admin', {users, routes, user:req.user});
         });
-    } else {res.redirect('/')}
+    });
 });
 
-router.post('/delete/user', (req,res) => {
+router.post('/delete/user', isAdmin("/"), (req,res) => {
     User.findByIdAndRemove(req.body.delete)
     .then(() => res.redirect('/admin'));
 });
 
-router.post('/update/user', (req,res) => {
+router.post('/update/user', isAdmin("/"), (req,res) => {
     let {username, email, creator, status, admin} = req.body;
     let id = req.body.update;
     User.findByIdAndUpdate(new ObjectId(id),{username: username, email:email, creator: creator, status: status, admin: admin})
     .then(() => res.redirect('/admin'));
 });
 
-router.post('/delete/route', (req,res) => {
+router.post('/delete/route', isAdmin("/"), (req,res) => {
     Route.findByIdAndRemove(req.body.delete)
     .then(() => res.redirect('/admin'));
 });
