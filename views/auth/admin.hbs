@@ -9,6 +9,7 @@
         {{/each}}
     </div>
 
+<<<<<<< HEAD
     <h3>Users</h3>
     <div class="d-flex flex-row align-self-stretch col-md-10">
         <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
@@ -80,3 +81,19 @@
     {{/each}}
 </div>
 <script src="/javascripts/update.js"></script>
+=======
+{{#each routes}}
+<p>{{this.name}}</p>
+<form action="delete/{{this.id}}" method="POST">
+    <div class="layout-buttons">
+        <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+        <button type="submit" class="btn buttonred">Delete this route</button>
+    </div>
+</form>
+{{/each}}
+
+
+{{#each users}}
+<p>hola</p>
+{{/each}}
+>>>>>>> 07f2e0d9f5cbdf2a9491c0a5c4ae1441e923ff57
