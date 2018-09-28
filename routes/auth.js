@@ -81,7 +81,7 @@ router.get('/confirm/:confirmCode', (req, res) => {
 	const confirmationCode = req.params.confirmCode;
 	User.findOneAndUpdate({confirmationCode}, {status: true})
 	.then((user) => {
-		res.render("auth/confirmation", {user} );
+		res.redirect("/");
 	})
 	.catch((err) => {
 		console.log(err);
