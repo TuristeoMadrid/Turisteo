@@ -53,7 +53,6 @@ router.get('/admin', ensureLoggedIn(),(req, res) => {
     } else {res.redirect('/')}
 });
 
-<<<<<<< HEAD
 router.post('/delete/user', (req,res) => {
     User.findByIdAndRemove(req.body.delete)
     .then(() => res.redirect('/admin'));
@@ -66,13 +65,9 @@ router.post('/update/user', (req,res) => {
     .then(() => res.redirect('/admin'));
 });
 
-
-
-=======
-router.post('/delete/:id', (req,res) => {
+router.post('/delete/route', (req,res) => {
     Route.findByIdAndRemove(req.body.delete)
-    .then(() => res.redirect('/admin'))
+    .then(() => res.redirect('/admin'));
 });
 
->>>>>>> 07f2e0d9f5cbdf2a9491c0a5c4ae1441e923ff57
 module.exports = router;

@@ -1,15 +1,39 @@
 <div class="container-fluid mx-3 d-flex flex-column justify-content-center align-items-center">
-    <h2>Admin</h2>
-    <div class="row align-self-stretch">
-        {{#each routes}}
-        <button id="{{this._id}}" class="btn buttonred">{{this.name}}</button>
-        <form action="{{this._id}}/delete" method="POST">
-            <button type="submit">Delete this route</button>
-        </form>
-        {{/each}}
+    <h3>Routes</h3>
+    <div class="col-md-10 d-flex flex-row align-self-stretch ">
+        <div class="name border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>Name</p>
+        </div>
+        <div class="duration border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>Duration</p>
+        </div>
+        <div class="description border py-2 d-flex align-items-center justify-content-center col-md-2">
+            <p>Description</p>
+        </div>
     </div>
+    {{#each routes}}
+    <div class="container-fluid d-flex flex-row align-self-stretch justify-content-start px-0">
+        <div class="d-flex flex-row align-self-stretch col-md-10">
+            <div class="name border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p>{{this.name}}</p>
+            </div>
+            <div class="duration border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p>{{this.duration}}</p>
+            </div>
+            <div class="description border py-2 d-flex align-items-center justify-content-center col-md-2">
+                <p>{{this.description}}</p>
+            </div>
+            <form action="/delete/route" method="POST">
+                <div class="layout-buttons mx-3">
+                    <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+                    <button type="submit" class="btn buttonred">Delete this route</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/each}}
 
-<<<<<<< HEAD
+
     <h3>Users</h3>
     <div class="d-flex flex-row align-self-stretch col-md-10">
         <div class="username border py-2 d-flex align-items-center justify-content-center col-md-2">
@@ -81,19 +105,3 @@
     {{/each}}
 </div>
 <script src="/javascripts/update.js"></script>
-=======
-{{#each routes}}
-<p>{{this.name}}</p>
-<form action="delete/{{this.id}}" method="POST">
-    <div class="layout-buttons">
-        <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
-        <button type="submit" class="btn buttonred">Delete this route</button>
-    </div>
-</form>
-{{/each}}
-
-
-{{#each users}}
-<p>hola</p>
-{{/each}}
->>>>>>> 07f2e0d9f5cbdf2a9491c0a5c4ae1441e923ff57
