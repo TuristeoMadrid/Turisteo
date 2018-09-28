@@ -4,7 +4,7 @@ const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 const Route = require('../models/Routes');
 const PoI = require('../models/PlaceOfInterest');
 
-router.get('/', ensureLoggedIn(), (req,res) => {
+router.get('/', (req,res) => {
   Route.find()
   .populate('places')
   .then(routes => {
