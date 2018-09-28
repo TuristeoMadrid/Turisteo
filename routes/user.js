@@ -52,4 +52,9 @@ router.get('/admin', ensureLoggedIn(),(req, res) => {
     } else {res.redirect('/')}
 });
 
+router.post('/delete/:id', (req,res) => {
+    Route.findByIdAndRemove(req.body.delete)
+    .then(() => res.redirect('/admin'))
+});
+
 module.exports = router;

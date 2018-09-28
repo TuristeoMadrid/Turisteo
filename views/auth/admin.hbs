@@ -1,11 +1,15 @@
 <h2>Admin - Routes</h2>
 
-{{#each routes}}  
-    <button id="{{this._id}}" class="btn buttonred">{{this.name}}</button>
-    <form action="{{this._id}}/delete" method="POST">
-    <button type="submit">Delete this route</button>
-    </form>
+{{#each routes}}
+<p>{{this.name}}</p>
+<form action="delete/{{this.id}}" method="POST">
+    <div class="layout-buttons">
+        <input name="delete" id="delete" value="{{this.id}}" hidden="hidden">
+        <button type="submit" class="btn buttonred">Delete this route</button>
+    </div>
+</form>
 {{/each}}
+
 
 {{#each users}}
 <p>hola</p>
